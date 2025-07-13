@@ -152,4 +152,28 @@ export default class Tree {
     callback(node);
     this.#inOrder(node.right, callback);
   }
+
+  preOrderForEach(callback) {
+    this.#preOrder(this.root, callback);
+  }
+
+  #preOrder(node, callback) {
+    if (node === null) return;
+
+    callback(node);
+    this.#preOrder(node.left, callback);
+    this.#preOrder(node.right, callback);
+  }
+
+  postOrderForEach(callback) {
+    this.#postOrder(this.root, callback);
+  }
+
+  #postOrder(node, callback) {
+    if (node === null) return;
+
+    this.#postOrder(node.left, callback);
+    this.#postOrder(node.right, callback);
+    callback(node);
+  }
 }

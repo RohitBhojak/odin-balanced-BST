@@ -26,3 +26,11 @@ console.log(levelOrder);
 const inOrder = [];
 bst.inOrderForEach((node) => inOrder.push(node.value));
 console.log(inOrder);
+
+const preOrder = [];
+bst.preOrderForEach((node) => preOrder.push(node.value));
+console.log(preOrder);
+
+const postOrder = [];
+bst.postOrderForEach((node) => postOrder.push(node.value));
+console.log(postOrder);
