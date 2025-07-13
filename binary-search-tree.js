@@ -60,10 +60,53 @@ export default class Tree {
     return current;
   }
 
-  #getSuccessor(current) {
-    current = current.right;
+  deleteItem(value) {
+    this.root = this.#delete(this.root, value);
+  }
+
+  #delete(current, value) {
+    if (current == null) {
+      return current;
+    }
+
+    if (value > current.value) {
+      current.right = this.#delete(current.right, value);
+    } else if (value < current.value) {
+      current.left = this.#delete(current.left, value);
+    } else {
+      if (current.left == null) {
+        return current.right;
+      } else if (current.right == null) {
+        return current.left;
+      } else {
+        let successor = this.#getMin(current.right);
+        current.value = successor.value;
+        current.right = this.#delete(current.right, successor.value);
+      }
+    }
+    return current;
+  }
+
+  getMin() {
+    const min = this.#getMin(this.root);
+    return min ? min.value : null;
+  }
+
+  getMax() {
+    const max = this.#getMax(this.root);
+    return max ? max.value : null;
+  }
+
+  #getMin(current) {
     while (current && current.left) {
       current = current.left;
+    }
+    return current;
+  }
+
+  #getMax(current) {
+    while (current && current.right) {
+      current = current.right;
     }
     return current;
   }
