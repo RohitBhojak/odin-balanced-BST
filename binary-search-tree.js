@@ -140,4 +140,16 @@ export default class Tree {
       }
     }
   }
+
+  inOrderForEach(callback) {
+    this.#inOrder(this.root, callback);
+  }
+
+  #inOrder(node, callback) {
+    if (node === null) return;
+
+    this.#inOrder(node.left, callback);
+    callback(node);
+    this.#inOrder(node.right, callback);
+  }
 }

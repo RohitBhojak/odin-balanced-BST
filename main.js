@@ -19,6 +19,10 @@ console.log(bst.getMin());
 console.log(bst.find(111));
 console.log(bst.find(12));
 
-bst.levelOrderForEach((node) => {
-  console.log(node.value);
-});
+const levelOrder = [];
+bst.levelOrderForEach((node) => levelOrder.push(node.value));
+console.log(levelOrder);
+
+const inOrder = [];
+bst.inOrderForEach((node) => inOrder.push(node.value));
+console.log(inOrder);
