@@ -15,3 +15,6 @@ bst.prettyPrint();
 
 console.log(bst.getMax());
 console.log(bst.getMin());
+
+console.log(bst.find(111));
+console.log(bst.find(12));

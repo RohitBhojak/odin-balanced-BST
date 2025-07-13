@@ -110,4 +110,16 @@ export default class Tree {
     }
     return current;
   }
+
+  find(value) {
+    let current = this.root;
+    while (current && current.value !== value) {
+      if (value > current.value) {
+        current = current.right;
+      } else {
+        current = current.left;
+      }
+    }
+    return current;
+  }
 }
