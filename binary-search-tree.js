@@ -185,4 +185,31 @@ export default class Tree {
     this.#postOrder(node.right, callback);
     callback(node);
   }
+
+  height(value) {
+    return this.#maxDepth(this.find(value)) - 1;
+  }
+
+  #maxDepth(node) {
+    if (node === null) return 0;
+    const left = this.#maxDepth(node.left);
+    const right = this.#maxDepth(node.right);
+    return 1 + Math.max(left, right);
+  }
+
+  depth(value) {
+    let level = 0;
+    let current = this.root;
+
+    while (current && current.value !== value) {
+      if (value > current.value) {
+        current = current.right;
+      } else {
+        current = current.left;
+      }
+      level++;
+    }
+
+    return current ? level : -1;
+  }
 }

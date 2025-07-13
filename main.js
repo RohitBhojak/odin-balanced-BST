@@ -19,18 +19,20 @@ console.log(bst.getMin());
 console.log(bst.find(111));
 console.log(bst.find(12));
 
-const levelOrder = [];
-bst.levelOrderForEach((node) => levelOrder.push(node.value));
-console.log(levelOrder);
+// const levelOrder = [];
+// bst.levelOrderForEach((node) => levelOrder.push(node.value));
+// console.log(levelOrder);
 
-const inOrder = [];
-bst.inOrderForEach((node) => inOrder.push(node.value));
-console.log(inOrder);
+// const inOrder = [];
+// bst.inOrderForEach((node) => inOrder.push(node.value));
+// console.log(inOrder);
 
-const preOrder = [];
-bst.preOrderForEach((node) => preOrder.push(node.value));
-console.log(preOrder);
+// const preOrder = [];
+// bst.preOrderForEach((node) => preOrder.push(node.value));
+// console.log(preOrder);
 
-const postOrder = [];
-bst.postOrderForEach((node) => postOrder.push(node.value));
-console.log(postOrder);
+// const postOrder = [];
+// bst.postOrderForEach((node) => postOrder.push(node.value));
+// console.log(postOrder);
+
+console.log(bst.depth(7));
