@@ -125,7 +125,7 @@ export default class Tree {
   }
 
   levelOrderForEach(callback) {
-    if (callback === undefined) {
+    if (callback === undefined && typeof callback !== "function") {
       throw new Error(this.#callbackError);
     }
     if (this.root === null) return;
@@ -142,6 +142,9 @@ export default class Tree {
   }
 
   inOrderForEach(callback) {
+    if (callback === undefined && typeof callback !== "function") {
+      throw new Error(this.#callbackError);
+    }
     this.#inOrder(this.root, callback);
   }
 
@@ -154,6 +157,9 @@ export default class Tree {
   }
 
   preOrderForEach(callback) {
+    if (callback === undefined && typeof callback !== "function") {
+      throw new Error(this.#callbackError);
+    }
     this.#preOrder(this.root, callback);
   }
 
@@ -166,6 +172,9 @@ export default class Tree {
   }
 
   postOrderForEach(callback) {
+    if (callback === undefined && typeof callback !== "function") {
+      throw new Error(this.#callbackError);
+    }
     this.#postOrder(this.root, callback);
   }
 
