@@ -212,4 +212,26 @@ export default class Tree {
 
     return current ? level : -1;
   }
+
+  isBalanced() {
+    return this.#checkBalance(this.root) != -1;
+  }
+
+  #checkBalance(node) {
+    if (node === null) return 0;
+
+    const left = this.#checkBalance(node.left);
+    const right = this.#checkBalance(node.right);
+
+    if (left == -1 || right == -1) return -1;
+    if (Math.abs(left - right) > 1) return -1;
+
+    return 1 + Math.max(left, right);
+  }
+
+  reBalance() {
+    const inOrder = [];
+    this.inOrderForEach((node) => inOrder.push(node.value));
+    this.root = this.buildTree(inOrder);
+  }
 }

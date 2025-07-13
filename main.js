@@ -8,6 +8,7 @@ bst.insert(10);
 bst.insert(12);
 bst.insert(11);
 bst.insert(1421);
+bst.insert(31);
 bst.insert(1);
 
 bst.deleteItem(67);
@@ -35,4 +36,10 @@ console.log(bst.find(12));
 // bst.postOrderForEach((node) => postOrder.push(node.value));
 // console.log(postOrder);
 
+console.log(bst.height(23));
 console.log(bst.depth(7));
+
+console.log(bst.isBalanced());
+bst.reBalance();
+bst.prettyPrint();
+console.log(bst.isBalanced());
