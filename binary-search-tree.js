@@ -8,6 +8,7 @@ class Node {
 }
 
 export default class Tree {
+  #callbackError = "Callback is required in function argument";
   constructor(array) {
     const sorted = uniqueMergeSort(array);
     this.root = this.buildTree(sorted);
@@ -121,5 +122,22 @@ export default class Tree {
       }
     }
     return current;
+  }
+
+  levelOrderForEach(callback) {
+    if (callback === undefined) {
+      throw new Error(this.#callbackError);
+    }
+    if (this.root === null) return;
+    const queue = [this.root];
+    while (queue.length) {
+      const size = queue.length;
+      for (let i = 0; i < size; i++) {
+        const node = queue.shift();
+        if (node.left) queue.push(node.left);
+        if (node.right) queue.push(node.right);
+        callback(node);
+      }
+    }
   }
 }

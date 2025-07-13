@@ -18,3 +18,7 @@ console.log(bst.getMin());
 
 console.log(bst.find(111));
 console.log(bst.find(12));
+
+bst.levelOrderForEach((node) => {
+  console.log(node.value);
+});
