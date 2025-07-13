@@ -42,23 +42,29 @@ export default class Tree {
   }
 
   insert(value) {
-    let current = this.root;
-    let prev = null;
-    while (current) {
-      prev = current;
-      if (value < current.value) {
-        current = current.left;
-      } else {
-        current = current.right;
-      }
-    }
-    const newNode = new Node(value);
-    if (prev === null) {
-      this.root = newNode;
-      return;
+    this.root = this.#insert(this.root, value);
+  }
+
+  #insert(current, value) {
+    console.log(current);
+    if (current == null) {
+      return new Node(value);
     }
 
-    if (value > prev.value) prev.right = newNode;
-    else if (value < prev.value) prev.left = newNode;
+    if (value > current.value) {
+      current.right = this.#insert(current.right, value);
+    } else if (value < current.value) {
+      current.left = this.#insert(current.left, value);
+    }
+
+    return current;
+  }
+
+  #getSuccessor(current) {
+    current = current.right;
+    while (current && current.left) {
+      current = current.left;
+    }
+    return current;
   }
 }
